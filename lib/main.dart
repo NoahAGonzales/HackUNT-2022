@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hackunt2022/Category.dart';
 import 'package:hackunt2022/LoginScreen.dart';
+import 'package:hackunt2022/Overview.dart';
+
+import 'Setting.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: 'LoginScreen',
       routes: {
-        'LoginScreen' : (context) => LoginPage()
+        'LoginScreen' : (context) => LoginPage(),
+        'Overview': (context) => Overview(),
+        'Category': (context) => Category(),
+        'Setting' : (context) => Setting()
       }
     );
   }
