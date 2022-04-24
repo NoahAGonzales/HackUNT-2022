@@ -6,12 +6,18 @@ import 'package:hackunt2022/LeaderboardEntry.dart';
 import 'dart:math';
 
 
+
 class CategoryPage extends StatefulWidget {
+
   @override
   _CategoryPage createState() => _CategoryPage();
 }
 
 class _CategoryPage extends State<CategoryPage> {
+  static String LBData = "";
+  static bool NeedsUpdate = false;
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,8 +35,8 @@ class _CategoryPage extends State<CategoryPage> {
             PerformanceMessage(message: "Your acceleration was rather aggressive!", eval: 3),
             EntryRandom(),
             CreateDatabase(),
-            FindMeStuff(),
-            FoundMeStuff(),
+            FindMeStuff(context: context),
+            FoundMeStuff(data: LBData, context: context),
           ],
         )
       )
@@ -131,11 +137,14 @@ Future addEntry() async {
 //-----0------------------0-----=--=-
 
 class FindMeStuff extends StatefulWidget {
+  final BuildContext context;
+  FindMeStuff({Key? key, required this.context}) : super(key: key);
   @override
   FindMeStuffState createState() => FindMeStuffState();
 }
 
 class FindMeStuffState extends State<FindMeStuff> {
+  List<LeaderboardEntry> entries = <LeaderboardEntry>[];
   late String buttonText = "FIND ME SPIDERMAN!";
   @override
   Widget build (BuildContext context) {
@@ -149,20 +158,31 @@ class FindMeStuffState extends State<FindMeStuff> {
   }
 
   Future findStuff() async {
-    buttonText = await LeaderboardDatabase.instance.readAllEntries().toString();
+    entries = await LeaderboardDatabase.instance.readAllEntries();
+    buttonText = entries[2].name + " | " + entries[2].leaderboardLocation.toString() + " | Size of list: " + entries.length.toString();
+
+    setState(() {
+      _CategoryPage.LBData = Random().nextInt(100).toString();
+    });
+    (widget.context as Element).markNeedsBuild();
   }
 }
 
 class FoundMeStuff extends StatelessWidget {
+  String data = "Find Me Spiderman";
+  BuildContext context;
+  FoundMeStuff({Key? key, required this.data, required this.context }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
         children: [
           Flexible(
-            child: Text('This is text')
+            child: Text(data)
           )
         ],
     );
+    (context as Element).markNeedsBuild();
+
   }
 }
 
@@ -174,7 +194,6 @@ class PerformanceMessage extends StatefulWidget {
   final int eval; // 0:"bad", 1:"ne" - Needs improvement, 2:"decent", 3:"good"
   const PerformanceMessage({Key? key, required this.message, required this.eval}) : super(key: key);
   final int color = 0;
-
 
   @override
   _PerformanceMessageState createState() => _PerformanceMessageState();
