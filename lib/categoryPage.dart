@@ -5,6 +5,8 @@ import 'package:hackunt2022/LeaderboardDatabaseAccess.dart';
 import 'package:hackunt2022/LeaderboardEntry.dart';
 import 'dart:math';
 
+import 'package:sqflite/sqflite.dart';
+
 
 
 class CategoryPage extends StatefulWidget {
@@ -129,7 +131,7 @@ Future initDb() async {
 }
 
 Future addEntry() async {
-  final entry = LeaderboardEntry(name: "name", leaderboardLocation: Random().nextInt(100));
+  final entry = LeaderboardEntry(name: "name", leaderboardLocation: Random().nextInt(100), personScore: Random().nextInt(100));
 
   await LeaderboardDatabase.instance.create(entry);
 
@@ -239,8 +241,8 @@ class VisualLineChart extends StatefulWidget {
 
 class _VisualLineChartState extends State<VisualLineChart> {
   List<Color> gradientColors = [
-    const Color(0xff23b6e6),
-    const Color(0xff02d39a),
+    const Color(0xFF008140),
+    const Color(0xFF008140),
   ];
 
   @override
@@ -248,18 +250,18 @@ class _VisualLineChartState extends State<VisualLineChart> {
     return Stack(
       children: <Widget>[
         AspectRatio(
-          aspectRatio: 1.80,
+          aspectRatio: 2.5,
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(18),
                 ),
-                color: Color(0xff232d37)
+                color: Color(0xFF008140)
             ),
             margin: const EdgeInsets.only(left: 20, right: 20),
             child: Padding(
               padding: const EdgeInsets.only(
-                  right: 20.0, left: 20.0, top: 20, bottom: 20),
+                  right: 0.0, left: 0.0, top: 0, bottom: 0),
               child: LineChart(mainData()),
             ),
           ),
@@ -270,7 +272,7 @@ class _VisualLineChartState extends State<VisualLineChart> {
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
-      color: Color(0xff68737d),
+      color: Color(0xFF000000),
       fontWeight: FontWeight.bold,
       fontSize: 16,
     );
@@ -289,7 +291,7 @@ class _VisualLineChartState extends State<VisualLineChart> {
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
-      color: Color(0xff67727d),
+      color: Color(0xFF000000),
       fontWeight: FontWeight.bold,
       fontSize: 15,
     );
@@ -318,13 +320,13 @@ class _VisualLineChartState extends State<VisualLineChart> {
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: const Color(0x00000000),
             strokeWidth: 1,
           );
         },
         getDrawingVerticalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: const Color(0x00000000),
             strokeWidth: 1,
           );
         },
@@ -355,8 +357,8 @@ class _VisualLineChartState extends State<VisualLineChart> {
         ),
       ),
       borderData: FlBorderData(
-          show: true,
-          border: Border.all(color: const Color(0xff37434d), width: 1)),
+          show: false,
+          border: Border.all(color: const Color(0xFF000000), width: 1)),
       minX: -14,
       maxX: 0,
       minY: 0,
@@ -381,31 +383,18 @@ class _VisualLineChartState extends State<VisualLineChart> {
             FlSpot(0, 70)
           ],
           isCurved: true,
-          gradient: LinearGradient(
-            colors: gradientColors,
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
+          color: Color(0xFFFFFFFF),
           barWidth: 5,
           isStrokeCapRound: true,
           dotData: FlDotData(
             show: false,
           ),
           belowBarData: BarAreaData(
-            show: true,
-            gradient: LinearGradient(
-              colors: gradientColors
-                  .map((color) => color.withOpacity(0.3))
-                  .toList(),
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
+            show: false,
+            color: Color(0xFF008140),
           ),
         ),
       ],
     );
   }
 }
-
-// ---------
-

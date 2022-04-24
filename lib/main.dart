@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'LoginScreen',
+      initialRoute: 'CategoryPage',
       routes: {
         'LoginScreen' : (context) => LoginPage(),
-        'Overview': (context) => Overview(),
-        'Category': (context) => Category(),
+        'Overview': (context) => Overview(context: context),
+        'Category': (context) => CategoryPage(),//Category(),
         'Setting' : (context) => Setting(),
         'CategoryPage': (context) => CategoryPage()
       }

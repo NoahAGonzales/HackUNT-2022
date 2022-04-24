@@ -19,6 +19,14 @@ class LeaderboardDatabase {
 		return _database!;
 	}
 
+	Future<String> getPath() async {
+		final dbPath = await getDatabasesPath();
+		final path = join(dbPath, 'leaderboard.db');
+
+		return await path;
+
+	}
+
 	Future<Database> _initDB(String filePath) async {
 		final dbPath = await getDatabasesPath();
 		final path = join(dbPath, filePath);
@@ -30,10 +38,11 @@ class LeaderboardDatabase {
 		final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
 		final nameType = 'TEXT NOT NULL';
 		final locationType = 'INTEGER NOT NULL';
+		final scoreType = 'INTEGER NOT NULL';
 
 		await db.execute('''CREATE TABLE $tableLeaderboard (${LeaderboardEntryFields
 				.id} $idType, ${LeaderboardEntryFields
-				.name} $nameType,${LeaderboardEntryFields.location} $locationType)''');
+				.name} $nameType,${LeaderboardEntryFields.location} $locationType,${LeaderboardEntryFields.score} $scoreType)''');
 	}
 
 	Future<LeaderboardEntry> create(LeaderboardEntry entry) async {
@@ -63,7 +72,8 @@ class LeaderboardDatabase {
 	Future<List<LeaderboardEntry>> readAllEntries() async {
 		final db = await instance.database;
 
-		final orderBy = '${LeaderboardEntryFields.location} DESC';
+
+		final orderBy = '${LeaderboardEntryFields.location} ASC';
 		final result = await db.query(tableLeaderboard);
 
 		return result.map((json) => LeaderboardEntry.fromJson(json)).toList();
@@ -82,10 +92,10 @@ class LeaderboardDatabase {
 		return await db.delete(
 				tableLeaderboard, where: '${LeaderboardEntryFields.id} = ?',
 				whereArgs: [id]);
+	}
 		Future close() async {
 			final db = await instance.database;
 
 			db.close();
 		}
 	}
-}
