@@ -152,7 +152,7 @@ class _VisualLineChartState extends State<VisualLineChart> {
             FlSpot(-3, 90),
             FlSpot(-2, 87),
             FlSpot(-1, 85),
-            FlSpot(0, 70)
+            FlSpot(0, 91)
           ],
           isCurved: true,
           color: Color(0XFF008140),

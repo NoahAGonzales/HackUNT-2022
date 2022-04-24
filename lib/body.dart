@@ -424,6 +424,9 @@ var bodyList = [
                     margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                     child: Hero(tag: "safety",
                     child: VisualLineChart3())
+                ),
+                Center(
+                    child: Text("Past 2 Weeks")
                 )
               ],
             ),
@@ -434,23 +437,30 @@ var bodyList = [
         padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
         width: double.infinity,
         height: 190,
-        child: Card(
-          color: Color(0X407E4CCB),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                padding: EdgeInsets.only(left: 15, top: 10),
-                child: Text("Habits", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20) ),),
-              Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                  child: VisualLineChart2()
-              )
-            ],
+        child: GestureDetector(
+          onTap: (){Navigator.pushNamed(Nextpage, "Habits");},
+          child: Card(
+            color: Color(0X407E4CCB),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10)
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 15, top: 10),
+                  child: Text("Habits", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20) ),),
+                Container(
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                    child: Hero(tag: 'habit',
+                    child: VisualLineChart2())
+                ),
+                Center(
+                    child: Text("Past 2 Weeks")
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -458,24 +468,31 @@ var bodyList = [
         padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
         width: double.infinity,
         height: 190,
-        child: Card(
-          color: Color(0X40008140),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                padding: EdgeInsets.only(left: 15, top: 10),
-                child: Text("Environment", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20), ),
-              ),
-              Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                  child: VisualLineChart()
-              )
-            ],
+        child: GestureDetector(
+          onTap: (){Navigator.pushNamed(Nextpage, "Envir");},
+          child: Card(
+            color: Color(0X40008140),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10)
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 15, top: 10),
+                  child: Text("Environment", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20), ),
+                ),
+                Container(
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                    child: Hero(tag: "envir",
+                    child: VisualLineChart())
+                ),
+                Center(
+                  child: Text("Past 2 Weeks")
+                )
+              ],
+            ),
           ),
         ),
       )
@@ -511,7 +528,9 @@ var bodyList = [
               ),
               DataRow(cells: [
                 DataCell(
-                  Text('Logout'))
+                    GestureDetector(
+                        onTap: (){Navigator.pop(Nextpage);},
+                        child: Text('Logout'),),)
               ]
               )
             ]
