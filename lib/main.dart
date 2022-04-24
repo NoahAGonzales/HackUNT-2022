@@ -11,14 +11,12 @@ import 'package:location/location.dart';
 
 Box<dynamic>? LBBox;
 Box<dynamic>? UsersBox;
-Box<dynamic>? locBox;
 
 void main() async {
   await Hive.initFlutter();
   UsersBox = await Hive.openBox('testUsers');
   LBBox = await Hive.openBox('testLB');
-  locBox = await Hive.openBox('testLoc');
-
+/*
   // Location services
   var location = new Location();
 
@@ -43,6 +41,8 @@ void main() async {
   // Enable location in background
   location.enableBackgroundMode(enable: true);
 
+  location.changeSettings(accuracy:LocationAccuracy.high, interval: 1000, distanceFilter: 1);
+*/
 
   runApp(const MyApp());
 }

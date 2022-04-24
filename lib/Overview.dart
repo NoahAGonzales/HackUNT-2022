@@ -37,10 +37,6 @@ class _OverviewState extends State<Overview> {
     UsersBox?.put("Tim", "58");
     UsersBox?.put("Grace", "97");
 
-    var loc = new Location();
-    loc.onLocationChanged.listen((LocationData currentLocation) {
-      print(currentLocation.toString());
-    });
 
     // Set default values and populate the LB with users
     setLB();
