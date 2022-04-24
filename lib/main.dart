@@ -58,10 +58,10 @@ class MyApp extends StatelessWidget {
       initialRoute: 'LoginScreen',
       routes: {
         'LoginScreen' : (context) => LoginPage(),
-        'Overview': (context) => Overview(),
+        'Overview': (context) => Overview(context:context),
         'Category': (context) => Category(),
         'Setting' : (context) => Setting(),
-        'Safety'  : (context) => Safety()
+        'Safety'  : (context) => Safety(),
         'CategoryPage': (context) => CategoryPage()
       }
     );

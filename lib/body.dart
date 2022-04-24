@@ -499,7 +499,7 @@ var bodyList = [
             rows: [
               DataRow(cells: [
                 DataCell(
-                    Text('Profile'))
+                    Text('Profile')
                 )
               ]
               ),
