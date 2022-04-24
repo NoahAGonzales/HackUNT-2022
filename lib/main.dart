@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hackunt2022/categoryPage.dart';
+import 'package:hackunt2022/Category.dart';
+import 'package:hackunt2022/LoginScreen.dart';
+import 'package:hackunt2022/Overview.dart';
+
+import 'Setting.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'CategoryPage',
+      initialRoute: 'LoginScreen',
       routes: {
+        'LoginScreen' : (context) => LoginPage(),
+        'Overview': (context) => Overview(),
+        'Category': (context) => Category(),
+        'Setting' : (context) => Setting(),
         'CategoryPage': (context) => CategoryPage()
       }
     );
