@@ -1,6 +1,12 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'VisualLineChart.dart';
+import 'VisualLineChart2.dart';
+import 'VisualLineChart3.dart';
+import 'Overview.dart';
+import 'main.dart';
 
 class User {
   String name;
@@ -396,45 +402,80 @@ var bodyList = [
 
     children: [
       Container(
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
         width: double.infinity,
-        height: 155,
-        child: Card(
-          color: Color(0X40F78BAA),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
+        height: 190,
+        child: GestureDetector(
+          onTap: (){Navigator.pushNamed(Nextpage, "Safety");},
+          child: Card(
+            color: Color(0X40F78BAA),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10)
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 15, top: 10),
+                  child: Text("Safety", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20) ),),
+                Container(
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                    child: Hero(tag: "safety",
+                    child: VisualLineChart3())
+                )
+              ],
+            ),
           ),
-          child: Container(
-            padding: EdgeInsets.only(left: 10, top: 10),
-            child: Text("Safety", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black) ),),
         ),
       ),
       Container(
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
         width: double.infinity,
-        height: 155,
+        height: 190,
         child: Card(
           color: Color(0X407E4CCB),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10)
           ),
-          child: Container(
-            padding: EdgeInsets.only(left: 10, top: 10),
-            child: Text("Habits", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black) ),),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 15, top: 10),
+                child: Text("Habits", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20) ),),
+              Container(
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                  child: VisualLineChart2()
+              )
+            ],
+          ),
         ),
       ),
       Container(
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
         width: double.infinity,
-        height: 155,
+        height: 190,
         child: Card(
           color: Color(0X40008140),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10)
           ),
-          child: Container(
-            padding: EdgeInsets.only(left: 10, top: 10),
-            child: Text("Environment", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black) ),),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 15, top: 10),
+                child: Text("Environment", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20), ),
+              ),
+              Container(
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                  child: VisualLineChart()
+              )
+            ],
+          ),
         ),
       )
     ],
@@ -457,7 +498,7 @@ var bodyList = [
             rows: [
               DataRow(cells: [
                 DataCell(
-                    Text('Profile')
+                    Text('Profile'))
                 )
               ]
               ),
@@ -469,8 +510,7 @@ var bodyList = [
               ),
               DataRow(cells: [
                 DataCell(
-                    Text('Logout')
-                )
+                  Text('Logout'))
               ]
               )
             ]

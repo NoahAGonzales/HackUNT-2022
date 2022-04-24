@@ -3,11 +3,13 @@ import 'package:hackunt2022/Category.dart';
 import 'package:hackunt2022/LoginScreen.dart';
 import 'package:hackunt2022/Overview.dart';
 
+import 'Safety.dart';
 import 'Setting.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
         'LoginScreen' : (context) => LoginPage(),
         'Overview': (context) => Overview(),
         'Category': (context) => Category(),
-        'Setting' : (context) => Setting()
+        'Setting' : (context) => Setting(),
+        'Safety'  : (context) => Safety()
       }
     );
   }

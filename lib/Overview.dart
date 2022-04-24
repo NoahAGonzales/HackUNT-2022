@@ -2,7 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'body.dart';
+import 'VisualLineChart.dart';
+import 'VisualLineChart2.dart';
+import 'VisualLineChart3.dart';
 
+var Nextpage;
 
 class Overview extends StatefulWidget {
   const Overview({Key? key}) : super(key: key);
@@ -37,7 +41,7 @@ class _OverviewState extends State<Overview> {
       style: optionStyle,
     ),
   ];
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -47,6 +51,9 @@ class _OverviewState extends State<Overview> {
   //bodyList[_selectedIndex],
 
   Widget build(BuildContext context) {
+    setState(() {
+      Nextpage = context;
+    });
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
