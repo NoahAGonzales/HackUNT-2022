@@ -529,6 +529,58 @@ var bodyList = [
               DataRow(cells: [
                 DataCell(
                     GestureDetector(
+                        onTap: () => showDialog<String>(
+                          context: Nextpage,
+
+                          builder: (BuildContext Nextpage) => AlertDialog(
+                              title: Text("Your Friend's phone number"),
+                              content: TextField(
+                                controller: customController,
+                              ),
+                              actions: <Widget>[
+                                MaterialButton (
+                                  elevation: 5,
+                                  child: Text('Submit'),
+                                  onPressed: () {
+                                    Navigator.of(Nextpage).pop(customController.text.toString());
+                                  },
+                                )
+                              ]
+                          )
+                        ),
+                        child: Text('Refer a Friend'))
+                )
+              ]
+              ),
+              DataRow(cells: [
+                DataCell(
+                    GestureDetector(
+                        onTap: () => showDialog<String>(
+                            context: Nextpage,
+
+                            builder: (BuildContext Nextpage) => AlertDialog(
+                                title: Text("Your Friend's phone number"),
+                                content: TextField(
+                                  controller: customController,
+                                ),
+                                actions: <Widget>[
+                                  MaterialButton (
+                                    elevation: 5,
+                                    child: Text('Submit'),
+                                    onPressed: () {
+                                      Navigator.of(Nextpage).pop(customController.text.toString());
+                                    },
+                                  )
+                                ]
+                            )
+                        ),
+                        child: Text('Connect with a friend'))
+                )
+              ]
+              ),
+              DataRow(cells: [
+                DataCell(
+                    GestureDetector(
                         onTap: (){Navigator.pop(Nextpage);},
                         child: Text('Logout'),),)
               ]
@@ -538,3 +590,5 @@ var bodyList = [
       ],
     ),
   )];
+
+TextEditingController customController = TextEditingController();
