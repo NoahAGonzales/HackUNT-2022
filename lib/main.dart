@@ -3,10 +3,17 @@ import 'package:hackunt2022/categoryPage.dart';
 import 'package:hackunt2022/Category.dart';
 import 'package:hackunt2022/LoginScreen.dart';
 import 'package:hackunt2022/Overview.dart';
-
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'Setting.dart';
 
-void main() {
+Box<dynamic>? LBBox;
+Box<dynamic>? UsersBox;
+
+void main() async {
+  await Hive.initFlutter();
+  UsersBox = await Hive.openBox('testUsers');
+  LBBox = await Hive.openBox('testLB');
   runApp(const MyApp());
 }
 
@@ -17,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'CategoryPage',
+      initialRoute: 'LoginScreen',
       routes: {
         'LoginScreen' : (context) => LoginPage(),
         'Overview': (context) => Overview(context: context),
