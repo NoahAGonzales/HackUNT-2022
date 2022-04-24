@@ -48,7 +48,7 @@ class _Environment extends State<Environment> {
                       margin: EdgeInsets.only(top: 50, right: 30, left: 30),
                       child: Hero(tag: "envir",
                           child: VisualLineChart())),
-                  PerformanceMessage(message: "You did not wasted a lot of gas with unneccary acceleration!", col: Colors.green),
+                  PerformanceMessage(message: "You did not waste a lot of gas with unneccary acceleration!", col: Colors.green),
                   PerformanceMessage(message: "You did not take too many unnecessary trips!", col: Colors.green),
                 ],
 

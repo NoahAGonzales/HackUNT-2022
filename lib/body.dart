@@ -522,7 +522,14 @@ var bodyList = [
               ),
               DataRow(cells: [
                 DataCell(
-                    Text('Update Leadboard')
+                    GestureDetector(
+                        onTap: (){
+                          //String BryanScore = UsersBox?.get('Bryan');
+                          //print(BryanScore);
+                          //BryanScore -= 10;
+                          //UsersBox?.put("Bryan", BryanScore.toString());
+                        },
+                        child: Text('Update Leaderboard'))
                 )
               ]
               ),
