@@ -24,9 +24,62 @@ class LeaderboardDatabase {
   }
 
   Future _createDB(Database db, int version) async {
-
+	final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
+	final nameType = 'TEXT NOT NULL';
+	final locationType = 'INTEGER NOT NULL';
+  
+	await db.execute('''
+CREATE TABLE $tableLeaderboard (
+			${LeaderboardEntryFields.id} $idType,
+			${LeaderboardEntryFields.name} $nameType,
+			${LeaderboardEntryFields.location} $locationType
+		)
+	''');
   }
-
+  
+  Future<LeaderboardEntry> create(LeaderboardEntry entry) async {
+	final db = await instance.database;
+	
+	final id = await db.insert(tableLeaderboard, entry.toJson());
+	return LeaderboardEntry.copy(id: id);
+  }
+  
+  Future<LeaderboardEntry> readEntry(int id) async {
+	final db = await instance.database;
+	
+	final maps = await db.query(
+		tableLeaderboard,
+		columns: LeaderboardEntryFields.values,
+		where: '${LeaderboardEntryFields.id} = ?',
+		whereArgs[id],
+	);
+	
+	if (maps.isNotEmpty) {
+		return LeaderboardEntry.fromJson(maps.first);
+	} else {
+		throw Exception('ID $id cannot be found');
+	}
+  }
+  
+  Future<List<LeaderboardEntry>> readAllEntries() async {
+	final db = await instance.database;
+	
+	final orderBy = '${LeaderboardEntryFields.location} DESC';
+	final result = await db.query(tableLeaderboard);
+	
+	return result.map((json) => LeaderboardEntry.fromJson(json)).toList();
+  }
+  
+  Future<int> udpate(LeaderboardEntry entry) async {
+	final db = await instance.database;
+	
+	return db.update(tableLeaderboard, entry.toJson(),where: '${LeaderboardEntryFields.id} = ?', whereArgs: [entry.id]);
+	}
+	
+	Future<int> delete(int id) async {
+		final db = await instance.database;
+		
+		return await db.delete( tableLeaderboard, where: '${LeaderboardEntryFields.id} = ?', whereArgs: [entry.id]);
   Future close() async{
     final db = await instance.database;
 
