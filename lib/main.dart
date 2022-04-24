@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackunt2022/categoryPage.dart';
 import 'package:hackunt2022/Category.dart';
 import 'package:hackunt2022/LoginScreen.dart';
 import 'package:hackunt2022/Overview.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         'LoginScreen' : (context) => LoginPage(),
         'Overview': (context) => Overview(),
         'Category': (context) => Category(),
-        'Setting' : (context) => Setting()
+        'Setting' : (context) => Setting(),
+        'CategoryPage': (context) => CategoryPage()
       }
     );
   }
