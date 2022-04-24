@@ -1,12 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:hackunt2022/categoryPage.dart';
 import 'package:hackunt2022/Category.dart';
 import 'package:hackunt2022/LoginScreen.dart';
 import 'package:hackunt2022/Overview.dart';
-
 import 'Safety.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'Setting.dart';
+import 'package:location/location.dart';
 
-void main() {
+Box<dynamic>? LBBox;
+Box<dynamic>? UsersBox;
+Box<dynamic>? locBox;
+
+void main() async {
+  await Hive.initFlutter();
+  UsersBox = await Hive.openBox('testUsers');
+  LBBox = await Hive.openBox('testLB');
+  locBox = await Hive.openBox('testLoc');
+
+  // Location services
+  var location = new Location();
+
+  // Check if the location service is enabled
+  var serviceEnabled = await location.serviceEnabled();
+  if (!serviceEnabled) {
+    serviceEnabled = await location.requestService();
+    if (!serviceEnabled) {
+      return;
+    }
+  }
+
+  // Location permissions
+  var permissionGranted = await location.hasPermission();
+  if (permissionGranted == PermissionStatus.denied) {
+    permissionGranted = await location.requestPermission();
+    if (permissionGranted != PermissionStatus.granted) {
+      return;
+    }
+  }
+
+  // Enable location in background
+  location.enableBackgroundMode(enable: true);
+
+
   runApp(const MyApp());
 }
 
@@ -25,6 +62,7 @@ class MyApp extends StatelessWidget {
         'Category': (context) => Category(),
         'Setting' : (context) => Setting(),
         'Safety'  : (context) => Safety()
+        'CategoryPage': (context) => CategoryPage()
       }
     );
   }

@@ -7,6 +7,7 @@ import 'VisualLineChart2.dart';
 import 'VisualLineChart3.dart';
 import 'Overview.dart';
 import 'main.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class User {
   String name;
