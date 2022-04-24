@@ -3,11 +3,13 @@ import 'package:hackunt2022/categoryPage.dart';
 import 'package:hackunt2022/Category.dart';
 import 'package:hackunt2022/LoginScreen.dart';
 import 'package:hackunt2022/Overview.dart';
+import 'Environment.dart';
 import 'Safety.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'Setting.dart';
 import 'package:location/location.dart';
+import 'Habit.dart';
 
 Box<dynamic>? LBBox;
 Box<dynamic>? UsersBox;
@@ -62,7 +64,9 @@ class MyApp extends StatelessWidget {
         'Category': (context) => Category(),
         'Setting' : (context) => Setting(),
         'Safety'  : (context) => Safety(),
-        'CategoryPage': (context) => CategoryPage()
+        'CategoryPage': (context) => CategoryPage(),
+        'Habits'  : (context) => Habits(),
+        'Envir'   : (context) => Environment()
       }
     );
   }
