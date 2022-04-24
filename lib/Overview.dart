@@ -2,6 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
+class User {
+  String name;
+  String score = "none";
+
+  User(String this.name, double score) {
+    this.score = score.toString();
+  }
+}
+
 class Overview extends StatefulWidget {
   const Overview({Key? key}) : super(key: key);
 
@@ -14,6 +23,27 @@ class _OverviewState extends State<Overview> {
   double progressValue = 80;
   int trips = 25;
   int miles = 168;
+
+  User rank1 = new User("Bryan", 99);
+  User rank2 = new User("Bryan", 99);
+  User rank3 = new User("Bryan", 99);
+  User rank4 = new User("Bryan", 99);
+  User rank5 = new User("Bryan", 99);
+  User rank6 = new User("Bryan", 99);
+  User rank7 = new User("Bryan", 99);
+  User rank8 = new User("Bryan", 99);
+  User rank9 = new User("Bryan", 99);
+  User rank10 = new User("Bryan", 99);
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      rank1.name = "Don";
+    });
+  }
+
+
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
@@ -301,10 +331,10 @@ class _OverviewState extends State<Overview> {
                                   Text('1'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank1.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank1.score),
                                 ),
                               ]),
                               DataRow(cells: [
@@ -312,10 +342,10 @@ class _OverviewState extends State<Overview> {
                                   Text('2'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank2.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank2.score),
                                 ),
                               ]),
                               DataRow(cells: [
@@ -323,10 +353,10 @@ class _OverviewState extends State<Overview> {
                                   Text('3'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank3.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank3.score),
                                 ),
                               ]),
                               DataRow(cells: [
@@ -334,10 +364,10 @@ class _OverviewState extends State<Overview> {
                                   Text('4'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank4.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank4.score),
                                 ),
                               ]),
                               DataRow(cells: [
@@ -345,10 +375,10 @@ class _OverviewState extends State<Overview> {
                                   Text('5'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank5.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank5.score),
                                 ),
                               ]),
                               DataRow(cells: [
@@ -356,10 +386,10 @@ class _OverviewState extends State<Overview> {
                                   Text('6'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank6.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank6.score),
                                 ),
                               ]),
                               DataRow(cells: [
@@ -367,10 +397,10 @@ class _OverviewState extends State<Overview> {
                                   Text('7'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank7.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank7.score),
                                 ),
                               ]),
                               DataRow(cells: [
@@ -378,10 +408,10 @@ class _OverviewState extends State<Overview> {
                                   Text('8'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank8.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank8.score),
                                 ),
                               ]),
                               DataRow(cells: [
@@ -389,10 +419,10 @@ class _OverviewState extends State<Overview> {
                                   Text('9'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank9.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank9.score),
                                 ),
                               ]),
                               DataRow(cells: [
@@ -400,10 +430,10 @@ class _OverviewState extends State<Overview> {
                                   Text('10'),
                                 ),
                                 DataCell(
-                                  Text('Bryan Nguyen'),
+                                  Text(rank10.name),
                                 ),
                                 DataCell(
-                                  Text('99'),
+                                  Text(rank10.score),
                                 ),
                               ]),
                             ]),
