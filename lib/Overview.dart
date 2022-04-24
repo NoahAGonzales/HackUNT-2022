@@ -54,19 +54,7 @@ class _OverviewState extends State<Overview> {
         backgroundColor: const Color(0xFFE22925),
         title: new Text("State Farm"),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Card(),
-              ],
-            ),
-          ),
-        ],
-      ),
+      body: bodyList[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFFE22925),
         items: const <BottomNavigationBarItem>[

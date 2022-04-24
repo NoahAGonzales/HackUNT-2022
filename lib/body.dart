@@ -388,5 +388,93 @@ var bodyList = [
         ),
       ],
     ),
+
   ),
-  Container(color: Colors.grey)];
+  Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    crossAxisAlignment: CrossAxisAlignment.center,
+
+    children: [
+      Container(
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        width: double.infinity,
+        height: 155,
+        child: Card(
+          color: Color(0X40F78BAA),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+          ),
+          child: Container(
+            padding: EdgeInsets.only(left: 10, top: 10),
+            child: Text("Safety", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black) ),),
+        ),
+      ),
+      Container(
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        width: double.infinity,
+        height: 155,
+        child: Card(
+          color: Color(0X407E4CCB),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+          ),
+          child: Container(
+            padding: EdgeInsets.only(left: 10, top: 10),
+            child: Text("Habits", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black) ),),
+        ),
+      ),
+      Container(
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        width: double.infinity,
+        height: 155,
+        child: Card(
+          color: Color(0X40008140),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+          ),
+          child: Container(
+            padding: EdgeInsets.only(left: 10, top: 10),
+            child: Text("Environment", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black) ),),
+        ),
+      )
+    ],
+  ),
+  Container(
+    child: Column(
+      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        DataTable(
+            columns: [
+              DataColumn(label: Text('Setting',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight:  FontWeight.w400,
+                ),
+              ),
+              ),
+            ],
+            rows: [
+              DataRow(cells: [
+                DataCell(
+                    Text('Profile')
+                )
+              ]
+              ),
+              DataRow(cells: [
+                DataCell(
+                    Text('Update Leadboard')
+                )
+              ]
+              ),
+              DataRow(cells: [
+                DataCell(
+                    Text('Logout')
+                )
+              ]
+              )
+            ]
+        )
+      ],
+    ),
+  )];
