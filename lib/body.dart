@@ -1,6 +1,12 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'VisualLineChart.dart';
+import 'VisualLineChart2.dart';
+import 'VisualLineChart3.dart';
+import 'Overview.dart';
+import 'main.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class User {
@@ -389,5 +395,127 @@ var bodyList = [
         ),
       ],
     ),
+
   ),
-  Container(color: Colors.grey)];
+  Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    crossAxisAlignment: CrossAxisAlignment.center,
+
+    children: [
+      Container(
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        width: double.infinity,
+        height: 190,
+        child: GestureDetector(
+          onTap: (){Navigator.pushNamed(Nextpage, "Safety");},
+          child: Card(
+            color: Color(0X40F78BAA),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10)
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 15, top: 10),
+                  child: Text("Safety", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20) ),),
+                Container(
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                    child: Hero(tag: "safety",
+                    child: VisualLineChart3())
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+      Container(
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        width: double.infinity,
+        height: 190,
+        child: Card(
+          color: Color(0X407E4CCB),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 15, top: 10),
+                child: Text("Habits", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20) ),),
+              Container(
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                  child: VisualLineChart2()
+              )
+            ],
+          ),
+        ),
+      ),
+      Container(
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        width: double.infinity,
+        height: 190,
+        child: Card(
+          color: Color(0X40008140),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 15, top: 10),
+                child: Text("Environment", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20), ),
+              ),
+              Container(
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                  child: VisualLineChart()
+              )
+            ],
+          ),
+        ),
+      )
+    ],
+  ),
+  Container(
+    child: Column(
+      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        DataTable(
+            columns: [
+              DataColumn(label: Text('Setting',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight:  FontWeight.w400,
+                ),
+              ),
+              ),
+            ],
+            rows: [
+              DataRow(cells: [
+                DataCell(
+                    Text('Profile'))
+                )
+              ]
+              ),
+              DataRow(cells: [
+                DataCell(
+                    Text('Update Leadboard')
+                )
+              ]
+              ),
+              DataRow(cells: [
+                DataCell(
+                  Text('Logout'))
+              ]
+              )
+            ]
+        )
+      ],
+    ),
+  )];

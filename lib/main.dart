@@ -3,6 +3,7 @@ import 'package:hackunt2022/categoryPage.dart';
 import 'package:hackunt2022/Category.dart';
 import 'package:hackunt2022/LoginScreen.dart';
 import 'package:hackunt2022/Overview.dart';
+import 'Safety.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'Setting.dart';
@@ -46,6 +47,7 @@ void main() async {
   runApp(const MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -56,9 +58,10 @@ class MyApp extends StatelessWidget {
       initialRoute: 'LoginScreen',
       routes: {
         'LoginScreen' : (context) => LoginPage(),
-        'Overview': (context) => Overview(context: context),
-        'Category': (context) => CategoryPage(),//Category(),
+        'Overview': (context) => Overview(),
+        'Category': (context) => Category(),
         'Setting' : (context) => Setting(),
+        'Safety'  : (context) => Safety()
         'CategoryPage': (context) => CategoryPage()
       }
     );

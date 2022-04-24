@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:hackunt2022/main.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'body.dart';
+import 'VisualLineChart.dart';
+import 'VisualLineChart2.dart';
+import 'VisualLineChart3.dart';
 import 'package:hackunt2022/LeaderboardDatabaseAccess.dart';
 import 'package:hackunt2022/LeaderboardEntry.dart';
 import 'package:hive/hive.dart';
 import 'dart:collection';
 import 'package:location/location.dart';
 
-
+var Nextpage;
 
 class Overview extends StatefulWidget {
   final BuildContext context;
@@ -167,6 +170,9 @@ class _OverviewState extends State<Overview> {
   //bodyList[_selectedIndex],
 
   Widget build(BuildContext context) {
+    setState(() {
+      Nextpage = context;
+    });
     rebuildAllChildren(context);
     return Scaffold(
       backgroundColor: Colors.white,
