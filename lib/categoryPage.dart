@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:hackunt2022/LeaderboardDatabaseAccess.dart';
+import 'package:hackunt2022/LeaderboardEntry.dart';
+import 'dart:math';
 
 
 class CategoryPage extends StatefulWidget {
@@ -26,6 +29,8 @@ class _CategoryPage extends State<CategoryPage> {
             PerformanceMessage(message: "Your acceleration was rather aggressive!", eval: 3),
             EntryRandom(),
             CreateDatabase(),
+            FindMeStuff(),
+            FoundMeStuff(),
           ],
         )
       )
@@ -86,15 +91,13 @@ class EntryRandom extends StatefulWidget {
 }
 
 class EntryRandomState extends State<EntryRandom> {
-
-
   @override
   Widget build (BuildContext context) {
     return TextButton(
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all(Colors.deepOrange),
       ),
-      onPressed: () => Navigator.pop(context),
+      onPressed: () => addEntry(),
       child: const Text('Test'),
     );
   }
@@ -102,15 +105,63 @@ class EntryRandomState extends State<EntryRandom> {
 
 
 class CreateDatabase extends StatelessWidget {
-
   @override
   Widget build (BuildContext context) {
     return TextButton(
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all(Colors.deepOrange),
       ),
-      onPressed: () => Navigator.pop(context),
+      onPressed: () => initDb(),
       child: const Text('Create Database !!!!!!!'),
+    );
+  }
+}
+
+
+Future initDb() async {
+  await LeaderboardDatabase.instance;
+}
+
+Future addEntry() async {
+  final entry = LeaderboardEntry(name: "name", leaderboardLocation: Random().nextInt(100));
+
+  await LeaderboardDatabase.instance.create(entry);
+
+}
+//-----0------------------0-----=--=-
+
+class FindMeStuff extends StatefulWidget {
+  @override
+  FindMeStuffState createState() => FindMeStuffState();
+}
+
+class FindMeStuffState extends State<FindMeStuff> {
+  late String buttonText = "FIND ME SPIDERMAN!";
+  @override
+  Widget build (BuildContext context) {
+    return TextButton(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all(Colors.deepOrange),
+      ),
+      onPressed: () => findStuff(),
+      child: Text(buttonText),
+    );
+  }
+
+  Future findStuff() async {
+    buttonText = await LeaderboardDatabase.instance.readAllEntries().toString();
+  }
+}
+
+class FoundMeStuff extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+        children: [
+          Flexible(
+            child: Text('This is text')
+          )
+        ],
     );
   }
 }
@@ -336,3 +387,6 @@ class _VisualLineChartState extends State<VisualLineChart> {
     );
   }
 }
+
+// ---------
+

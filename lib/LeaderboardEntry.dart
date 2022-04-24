@@ -30,7 +30,7 @@ class LeaderboardEntry {
 		LeaderboardEntry(
 			id: id ?? this.id,
 			name: name ?? this.name,
-			leaderboardLocation: leaderboardLocation ?? this.leaderboardLocation
+			leaderboardLocation: leaderboardLocation //?? this.leaderboardLocation,
 		);
 		
 		static LeaderboardEntry fromJson(Map<String, Object?> json) => LeaderboardEntry(
